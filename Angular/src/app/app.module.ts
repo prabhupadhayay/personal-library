@@ -23,6 +23,7 @@ import { AuthGuard } from "./auth.guard";
 import { MustMatchDirective } from "./_helpers/must-match.directive";
 import { AuthService } from "./shared/auth/auth.service";
 import { LibraryComponent } from './library/library.component';
+import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LibraryComponent } from './library/library.component';
     LoginComponent,
     RegisterComponent,
     MustMatchDirective,
-    LibraryComponent
+    LibraryComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

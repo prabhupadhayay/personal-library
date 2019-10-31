@@ -22,9 +22,9 @@ const membershipschema = new Schema({
 const userSchema = new Schema({
     username: {
         type: String,
-        index: true
-        // unique: true,
-        // required: true
+       
+        unique: true,
+        required: true
     },
     first_name: {
         type: String,
