@@ -11,8 +11,8 @@ declare var $:any;
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerUserData = { 
-    membership:{
+  registerUserData:any = { 
+    membership: {
       
     }
   }

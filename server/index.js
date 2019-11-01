@@ -5,7 +5,7 @@ var urlencodedParser = bodyparser.urlencoded({
 });
 var cors = require("cors");
 const path = require('path');
-const port = 4000;
+const port = process.env.PORT || 8080;
 
 var app = express();
 app.use(bodyparser.json()); 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/occult-archive', {
+mongoose.connect('mongodb+srv://prabh:prabh@node-api-ilqns.mongodb.net/test?retryWrites=true&w=majority', {
     useFindAndModify: false,
     useUnifiedTopology: true,
     useNewUrlParser: true

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginUserData = {}
+  loginUserData:any = {}
   constructor(private _auth: AuthService,
     private _router: Router) { }
 

@@ -9,7 +9,7 @@ import { MaterialModule } from "./material/material.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./header/header.component";
+//import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { MembershipComponent } from "./membership/membership.component";
 import { AboutComponent } from "./about/about.component";
@@ -23,12 +23,12 @@ import { AuthGuard } from "./auth.guard";
 import { MustMatchDirective } from "./_helpers/must-match.directive";
 import { AuthService } from "./shared/auth/auth.service";
 import { LibraryComponent } from './library/library.component';
-import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+//import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    //HeaderComponent,
     HomeComponent,
     MembershipComponent,
     AboutComponent,
@@ -39,7 +39,7 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
     RegisterComponent,
     MustMatchDirective,
     LibraryComponent,
-    AdminLoginComponent
+    //AdminLoginComponent
   ],
   imports: [
     BrowserModule,

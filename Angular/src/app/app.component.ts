@@ -9,7 +9,7 @@ import { AuthService } from "./shared/auth/auth.service";
 export class AppComponent {
   title = "Inventory";
   navbarOpen = false;
-  constructor(private _authService: AuthService){}
+  constructor(public _authService: AuthService){}
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
