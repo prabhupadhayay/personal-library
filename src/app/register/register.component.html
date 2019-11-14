@@ -65,12 +65,12 @@
               </div>
             </div>
             <div class="radio">
-              <label><input type="radio" (click)="toggleDisplay1()" name="membership_id" value="1"
-                  [(ngModel)]="registerUserData.membership.membership_id">Basic Membership
+              <label><input type="radio" (click)="toggleDisplay1()" name="membership_id" 
+                  [(ngModel)]="registerUserData.membership.membership_id" [value]="0"  required>Basic Membership
                 Plan- Free/1 year</label>
             </div>
             <div class="radio">
-              <label><input type="radio" (click)="toggleDisplay()" #m="ngModel" id="membership_id1" value="2"
+              <label><input type="radio" (click)="toggleDisplay()" #m="ngModel" id="membership_id1" [value]="1"
                   name="membership_id" [(ngModel)]="registerUserData.membership.membership_id" >Premium
                 Membership Plan- $125/1 year</label>
             </div>

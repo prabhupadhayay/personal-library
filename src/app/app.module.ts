@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
+import { ModalModule } from './_modal';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -23,6 +24,7 @@ import { AuthGuard } from "./auth.guard";
 import { MustMatchDirective } from "./_helpers/must-match.directive";
 import { AuthService } from "./shared/auth/auth.service";
 import { LibraryComponent } from './library/library.component';
+import { AdminComponent } from './admin/admin.component';
 //import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 @NgModule({
@@ -39,6 +41,7 @@ import { LibraryComponent } from './library/library.component';
     RegisterComponent,
     MustMatchDirective,
     LibraryComponent,
+    AdminComponent,
     //AdminLoginComponent
   ],
   imports: [
@@ -50,7 +53,8 @@ import { LibraryComponent } from './library/library.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    ModalModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

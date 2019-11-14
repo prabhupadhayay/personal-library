@@ -8,10 +8,11 @@ import { MembershipComponent } from "./membership/membership.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { LibraryComponent } from "./library/library.component";
+import { AdminComponent } from './admin/admin.component';
 //import { AdminLoginComponent } from "./Admin/admin-login/admin-login.component";
 import { AuthGuard } from "./auth.guard";
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: "", component: HomeComponent },
   { path: "about", component: AboutComponent },
   { path: "contactus", component: ContactusComponent },
   { path: "faq", component: FAQComponent },
@@ -23,8 +24,8 @@ const routes: Routes = [
   { path: "library", canActivate: [AuthGuard], component: LibraryComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  //{ path: "Admin/admin-login", component: AdminLoginComponent },
-  { path: "", redirectTo: "/home", pathMatch: "full" }
+  { path: "admin", component: AdminComponent },
+  { path: "**", redirectTo: "/", pathMatch: "full" }
 ];
 
 @NgModule({

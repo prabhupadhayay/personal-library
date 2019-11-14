@@ -3,8 +3,13 @@ const router = express.Router()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const Joi = require('joi');
+var ObjectId=require('mongoose');
+var ObjectId=require('mongoose').Types.ObjectId;
 const expressValidator = require('express-validator')
-const {check, validationResult} = require('express-validator');
+const {
+    check,
+    validationResult
+} = require('express-validator');
 const app = express()
 //app.use(expressValidator())
 
@@ -33,30 +38,29 @@ router.post('/register', (req, res) => {
     //let userData = req.body
     const today = new Date()
 
-    
-    let userData = 
-    {
-        
-         username: req.body.username,
+
+    let userData = {
+
+        username: req.body.username,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-        created: today,
+        //created: today,
         membership: {
             membership_id: req.body.membership.membership_id,
             btc: req.body.membership.btc,
             xmr: req.body.membership.xmr,
             trans_id: req.body.membership.trans_id
-       },
+        },
 
     }
-// if(userData.membership.membership_id == 2){
-  
-   
-// }else{
+    // if(userData.membership.membership_id == 2){
 
-// }
+
+    // }else{
+
+    // }
 
     // form validation
     // if (req.body.membership[0] == 2) {
@@ -130,5 +134,110 @@ router.post('/login', (req, res) => {
         }
     })
 })
+
+
+
+
+router.get('/', (req, res) => {
+    User.find((err, docs) => {
+        if (!err) {
+            res.send(docs);
+
+        } else console.log('Error is:' + JSON.stringify(err, undefined, 2));
+    });
+});
+
+
+
+router.get('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No Records with given id  ${ req.params.id}`);
+
+    User.findById(req.params.id, (err, doc) => {
+        if (!err)
+            res.send(doc);
+        else
+            console.log("error there :" + JSON.stringify(err, undefined, 2));
+    })
+})
+
+
+
+router.put('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No Records with given id  ${ req.params.id}`);
+    // let now = new Date();
+    // now.toUTCString();
+    // new Date(now.toUTCString());
+    let userData = {
+
+        username: req.body.username,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+       // created: today,
+        membership: {
+            membership_id: req.body.membership.membership_id,
+            btc: req.body.membership.btc,
+            xmr: req.body.membership.xmr,
+            trans_id: req.body.membership.trans_id
+        },
+
+    }
+    User.findByIdAndUpdate(req.params.id, {
+        $set: userData
+    }, {
+        new: true
+    }, (err, doc) => {
+        if (!err) res.send(doc);
+        else console.log('error :' + JSON.stringify(err, undefined, 2));
+    })
+});
+
+
+
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No Records with given id  ${ req.params.id}`);
+    User.findByIdAndDelete(req.params.id, (err, doc) => {
+        if (!err) res.send(doc);
+        else console.log('error :' + JSON.stringify(err, undefined, 2));
+    })
+});
+
+router.post('/add', (req, res) => {
+
+    let userData = {
+
+        username: req.body.username,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+      //  created: today,
+        membership: {
+            membership_id: req.body.membership.membership_id,
+            btc: req.body.membership.btc,
+            xmr: req.body.membership.xmr,
+            trans_id: req.body.membership.trans_id
+        },
+
+    }
+
+
+    userData.save((err, doc) => {
+        if (!err) {
+            res.send(doc);
+        } else {
+            console.log("error while doing post " + JSON.stringify(err, undefined, 2));
+        }
+    });
+
+});
+
+
+
+
 
 module.exports = router

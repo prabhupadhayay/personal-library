@@ -1,0 +1,93 @@
+<mat-card>
+  <div class="row">
+    <div class="col">
+
+
+      <div class="card blue-grey lighten-4">
+        
+        <table class="responsive-table highlight">
+            <!-- <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+            <button (click)="openModal('custom-modal-2')">Open Modal 2</button> -->
+          <thead>
+              <!-- <div class="row"> -->
+            <tr>
+            <th>Username</th>
+             <th>Email</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Options</th>
+            </tr>
+          <!-- </div> -->
+          </thead>
+          <jw-modal id="custom-modal-1">
+              
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit User details</h4>
+                  <button type="button" class="close" (click)="closeModal('custom-modal-1');">&times;</button>
+                </div>
+                <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                <!-- Modal body -->
+                <div class="modal-body">
+                  
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="adminService.selectedUser._id">
+                  <div class="form-group">
+                    <label for="uname1">Email</label>
+                    <input type="text"   name="email" #name="ngModel"
+                    [(ngModel)]="adminService.selectedUser.email" >
+                  </div>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text"   name="username" #name="ngModel"
+                    [(ngModel)]="adminService.selectedUser.username">
+                  </div>
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text"   name="firstname" #name="ngModel"
+                    [(ngModel)]="adminService.selectedUser.first_name">
+                  </div>
+                  <div class="form-group">
+                    <label>Status</label>
+                    <input type="text"   name="status" #name="ngModel"
+                    [(ngModel)]="adminService.selectedUser.membership.membership_id">
+                  </div>
+               
+                </div>
+            
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-custom right" type="submit" name="submitbtn" [disabled]='!userForm.valid'  >Submit</button>
+                  <button type="button" class="btn btn-danger" (click)="closeModal('custom-modal-1');">Close</button>
+                </div>
+              </form>
+              </div>
+            </div>  
+            
+            <!-- <button (click)="closeModal('custom-modal-1');">Close</button> -->
+          </jw-modal>
+            
+          
+          
+          <tr *ngFor='let peo of adminService.user'>
+            <!-- <div class="cal"> -->
+            <td>{{peo.username}}</td>
+            <td>{{peo.email}}</td>
+            <td>{{peo.first_name}}</td>
+            <td>{{peo.membership.membership_id}}</td>
+            <a class="action-btn" (click)="onEdit(peo)" (click)="openModal('custom-modal-1')" (click)="setFlag()">
+              <i class="material-icons">edit</i>
+            </a>
+            <a class="action-btn" (click)="onDelete(peo._id)">
+              <i class="material-icons ">delete</i>
+            </a>
+            <!-- </div> -->
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</mat-card>
