@@ -13,7 +13,8 @@
             <tr>
             <th>Username</th>
              <th>Email</th>
-              <th>Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Status</th>
               <th>Options</th>
             </tr>
@@ -45,21 +46,28 @@
                     [(ngModel)]="adminService.selectedUser.username">
                   </div>
                   <div class="form-group">
-                    <label>Name</label>
+                    <label>First Name</label>
                     <input type="text"   name="firstname" #name="ngModel"
                     [(ngModel)]="adminService.selectedUser.first_name">
                   </div>
                   <div class="form-group">
-                    <label>Status</label>
-                    <input type="text"   name="status" #name="ngModel"
-                    [(ngModel)]="adminService.selectedUser.membership.membership_id">
+                    <label>Last Name</label>
+                    <input type="text"   name="lastname" #name="ngModel"
+                    [(ngModel)]="adminService.selectedUser.last_name">
+                  </div>
+                  <div class="form-group">
+                      <!-- <div class="radio"> -->
+                          <label><input type="radio" (click)="toggleDisplay1()" name="membership_id" 
+                              [(ngModel)]="adminService.selectedUser.membership.membership_id" [value]="0">Basic Membership
+                            Plan- Free/1 year</label>
+                        <!-- </div> -->
                   </div>
                
                 </div>
             
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button class="btn btn-custom right" type="submit" name="submitbtn" [disabled]='!userForm.valid'  >Submit</button>
+                    <button class="btn btn-primary" type="submit" name="submitbtn">Submit</button>
                   <button type="button" class="btn btn-danger" (click)="closeModal('custom-modal-1');">Close</button>
                 </div>
               </form>
@@ -76,6 +84,7 @@
             <td>{{peo.username}}</td>
             <td>{{peo.email}}</td>
             <td>{{peo.first_name}}</td>
+            <td>{{peo.last_name}}</td>
             <td>{{peo.membership.membership_id}}</td>
             <a class="action-btn" (click)="onEdit(peo)" (click)="openModal('custom-modal-1')" (click)="setFlag()">
               <i class="material-icons">edit</i>

@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
     this.refreshUserList();
     this.flag = { flag: 1 };
   }
-
+  isShow = true;
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
@@ -100,5 +100,11 @@ closeModal(id: string) {
     this.modalService.close(id);
 }
 
+toggleDisplay() {
+  this.isShow=false;
+}
+toggleDisplay1() {
+  this.isShow=true;
+}
 
 }

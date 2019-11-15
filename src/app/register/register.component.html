@@ -12,6 +12,14 @@
           <form name="form" (ngSubmit)="f.form.valid && registerUser()" #f="ngForm"
             [mustMatch]="['password', 'confirmPassword']" novalidate>
             <div class="form-group">
+                <label for="uname">User Name</label>
+                <input type="text" class="form-control" [(ngModel)]="registerUserData.username" name="userName"
+                  #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required>
+                <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
+                  <div *ngIf="userName.errors.required">User Name is required and can be same as an email address.</div>
+                </div>
+              </div>
+            <div class="form-group">
               <label for="fname">First Name</label>
               <input type="text" class="form-control" [(ngModel)]="registerUserData.first_name" name="firstName"
                 #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
@@ -20,14 +28,7 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="uname">User Name</label>
-              <input type="text" class="form-control" [(ngModel)]="registerUserData.username" name="userName"
-                #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required>
-              <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
-                <div *ngIf="userName.errors.required">User Name is required and can be same as an email address.</div>
-              </div>
-            </div>
+            
 
 
             <div class="form-group">
@@ -66,7 +67,7 @@
             </div>
             <div class="radio">
               <label><input type="radio" (click)="toggleDisplay1()" name="membership_id" 
-                  [(ngModel)]="registerUserData.membership.membership_id" [value]="0"  required>Basic Membership
+                  [(ngModel)]="registerUserData.membership.membership_id" [value]="0" >Basic Membership
                 Plan- Free/1 year</label>
             </div>
             <div class="radio">

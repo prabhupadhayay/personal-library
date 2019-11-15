@@ -12,7 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   postUser(userData: User) {
-    return this.http.post(this.baseurl, userData);
+    return this.http.post(this.baseurl1, userData);
     // .pipe(retry(2),catchError(this.handleError));
   }
   getUserList() {
