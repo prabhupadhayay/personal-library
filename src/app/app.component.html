@@ -1,0 +1,32 @@
+<mat-toolbar color="grey">
+    <mat-toolbar-row>
+        <!-- <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+          </button> -->
+      <div class="toolbar" role="banner">
+        <img
+          width="250"
+          alt="Angular Logo"
+          src="https://vibhutitechnologies.net/occult-archive/wp-content/uploads/2019/09/cropped-logo-2-1.png"
+        />
+      </div>
+    
+      <span class="menu-spacer"></span>
+      <div _ngcontent-tmv-c1="" class="flex-spacer"></div>
+      <div>
+        <a mat-button [routerLink]="'/'" routerLinkActive="active"> Home </a>
+        <a mat-button [routerLink]="'/admin'" routerLinkActive="active"> Admin </a>
+        <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
+        <a mat-button [routerLink]="'/membership'" routerLinkActive="active"> Membership </a>
+        <a mat-button [routerLink]="'/faq'" routerLinkActive="active"> FAQ </a>
+        <a mat-button [routerLink]="'/contactus'" routerLinkActive="active"> Contact us </a>
+        <a mat-button [routerLink]="'/library'" routerLinkActive="active"> Contribute to Library </a>
+        <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/login'" routerLinkActive="active"> Login </a>
+        <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/register'" routerLinkActive="active"> Register </a>
+        <a mat-button style="cursor:pointer" *ngIf="_authService.loggedIn()"
+          (click)="_authService.logoutUser()">Logout</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  
