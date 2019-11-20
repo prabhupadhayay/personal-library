@@ -8,20 +8,22 @@
         <img src="/assets/images/contact-us.png" style="width:100%">
       </div>
       <div class="column">
-        <form action="/home">
-          <label for="fname">Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
-          <label for="lname">email</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your Email">
-          <label for="country">Country</label>
+        <form #contactusForm="ngForm" (ngSubmit)="onSubmit(contactusForm)">
+          <label for="name">Name</label>
+          <input type="text"  name="name" #name="ngModel"[(ngModel)]="contactusService.selectedContact.name" placeholder="Your name..">
+          <label for="email">email</label>
+          <input type="email"name="email"#name="ngModel" [(ngModel)]="contactusService.selectedContact.email"  placeholder="Your Email">
+           <!-- <label for="country">Country</label>
           <select id="country" name="country">
             <option value="australia">India</option>
             <option value="canada">Canada</option>
             <option value="usa">USA</option>
-          </select>
-          <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-          <input type="submit" value="Submit">
+          </select>  -->
+          <label for="subject">Subject</label> 
+          <textarea id="subject" name="subject" #name="ngModel"
+          [(ngModel)]="contactusService.selectedContact.subject"  placeholder="Write something.." style="height:170px"></textarea>
+          <button class="btn btn-primary reset" type="button" name="resetbtn"  (click)="resetForm(contactusForm)" id="resetbtn" >Reset</button>
+          <button class="btn btn-success" type="submit" name="submitbtn" >Submit</button>
         </form>
       </div>
     </div>

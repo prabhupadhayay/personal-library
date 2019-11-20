@@ -19,13 +19,17 @@ import { ContactusComponent } from "./contactus/contactus.component";
 import { AccountComponent } from "./account/account.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { LibraryComponent } from './library/library.component';
+import { AdminComponent } from './admin/admin.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+//import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 import { AuthGuard } from "./auth.guard";
 import { MustMatchDirective } from "./_helpers/must-match.directive";
 import { AuthService } from "./shared/auth/auth.service";
-import { LibraryComponent } from './library/library.component';
-import { AdminComponent } from './admin/admin.component';
-//import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { ContactusService } from "./shared/contactus/contactus.service";
+import { UploadService } from "./shared/upload/upload.service";
+
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ import { AdminComponent } from './admin/admin.component';
     MustMatchDirective,
     LibraryComponent,
     AdminComponent,
+    CatalogueComponent,
     //AdminLoginComponent
   ],
   imports: [
@@ -56,7 +61,7 @@ import { AdminComponent } from './admin/admin.component';
     CommonModule,
     ModalModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard,ContactusService,UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

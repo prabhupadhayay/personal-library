@@ -3,7 +3,15 @@
   }
   
   /* Style inputs */
-  input[type=text], select, textarea {
+  input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  input[type=email] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -52,4 +60,8 @@
       width: 100%;
       margin-top: 0;
     }
+  }
+
+  .reset{
+    margin-right: 6px;
   }

@@ -9,6 +9,7 @@ import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { LibraryComponent } from "./library/library.component";
 import { AdminComponent } from './admin/admin.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
 //import { AdminLoginComponent } from "./Admin/admin-login/admin-login.component";
 import { AuthGuard } from "./auth.guard";
 const routes: Routes = [
@@ -21,10 +22,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: MembershipComponent
   },
-  { path: "library", canActivate: [AuthGuard], component: LibraryComponent },
+  //{ path: "library", canActivate: [AuthGuard], component: LibraryComponent },
+  { path: "library", component: LibraryComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "admin", component: AdminComponent },
+  { path: "catalogue", component: CatalogueComponent },
   { path: "**", redirectTo: "/", pathMatch: "full" }
 ];
 

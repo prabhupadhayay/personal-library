@@ -15,12 +15,12 @@
       <div _ngcontent-tmv-c1="" class="flex-spacer"></div>
       <div>
         <a mat-button [routerLink]="'/'" routerLinkActive="active"> Home </a>
-        <a mat-button [routerLink]="'/admin'" routerLinkActive="active"> Admin </a>
         <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
         <a mat-button [routerLink]="'/membership'" routerLinkActive="active"> Membership </a>
         <a mat-button [routerLink]="'/faq'" routerLinkActive="active"> FAQ </a>
         <a mat-button [routerLink]="'/contactus'" routerLinkActive="active"> Contact us </a>
         <a mat-button [routerLink]="'/library'" routerLinkActive="active"> Contribute to Library </a>
+        <!-- <a mat-button [routerLink]="'/catalogue'" routerLinkActive="active"> catalogue </a> -->
         <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/login'" routerLinkActive="active"> Login </a>
         <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/register'" routerLinkActive="active"> Register </a>
         <a mat-button style="cursor:pointer" *ngIf="_authService.loggedIn()"

@@ -5,7 +5,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var ObjectId=require('mongoose').Types.ObjectId;
 const membershipschema = new Schema({
     membership_id: {
-        type: String,
+        type: String
         
     },
     btc: {
@@ -56,17 +56,4 @@ module.exports = mongoose.model('user', userSchema, 'users');
 
     
 
-//    let userData = {
-//     username: req.body.username,
-//     first_name: req.body.first_name,
-//     last_name: req.body.last_name,
-//     email: req.body.email,
-//     password: req.body.password,
-//     created: today,
-//     membership: {
-//         membership_id: req.body.membership.membership_id,
-//         btc: req.body.membership.btc,
-//         xmr: req.body.membership.xmr,
-//         trans_id: req.body.membership.trans_id
-//     }
-// }
+

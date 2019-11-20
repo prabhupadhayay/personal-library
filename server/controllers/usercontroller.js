@@ -3,8 +3,8 @@ const router = express.Router()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const Joi = require('joi');
-var ObjectId=require('mongoose');
-var ObjectId=require('mongoose').Types.ObjectId;
+var ObjectId = require('mongoose');
+var ObjectId = require('mongoose').Types.ObjectId;
 const expressValidator = require('express-validator')
 const {
     check,
@@ -54,7 +54,7 @@ router.post('/register', (req, res) => {
         },
 
     }
-    
+
     let user = new User(userData)
 
     user.save((err, registeredUser) => {
@@ -132,7 +132,7 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No Records with given id  ${ req.params.id}`);
-   
+
     let userData = {
 
         username: req.body.username,
@@ -140,7 +140,7 @@ router.put('/:id', (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-       // created: today,
+        // created: today,
         membership: {
             membership_id: req.body.membership.membership_id,
             btc: req.body.membership.btc,
@@ -177,7 +177,7 @@ router.post('/add', (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-      //  created: today,
+        //  created: today,
         membership: {
             membership_id: req.body.membership.membership_id,
             btc: req.body.membership.btc,

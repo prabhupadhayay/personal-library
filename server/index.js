@@ -25,12 +25,16 @@ app.use(function(req, res, next) {
 
 const { mongoose } = require("./db.js");
 let userController = require("./controllers/usercontroller");
-
+let uploadController = require("./controllers/photo");
+let multerController = require("./controllers/multer");
+let contactusController = require("./controllers/contactus");
 
 
 //API Routes
 app.use('/api/users', userController);
-
+app.use('/api/users',uploadController );
+app.use('/api/users',multerController)
+app.use('/api/users',contactusController)
 // if (process.env.NODE_ENV === 'production') {
   const appPath = path.join(__dirname, '..', '/dist/Angular');
   app.use(express.static(appPath));
