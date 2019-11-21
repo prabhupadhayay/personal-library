@@ -12,7 +12,7 @@
     </div>
     
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>Choose File</h3>            
@@ -35,6 +35,46 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+    <div class="container">
+        <div class="row">
+      
+          <form [formGroup]="form" (ngSubmit)="submitForm()">
+      
+            <!-- Progress Bar -->
+            <div class="progress form-group" *ngIf="fileUploadService.percentDone">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                [style.width.%]="fileUploadService.percentDone">
+              </div>
+            </div>
+      
+            <!-- Image Preview -->
+            <div class="form-group">
+              <div class="preview" *ngIf="preview && preview !== null">
+                <img [src]="preview" [alt]="form.value.name" height="200" width="300">
+              </div>
+            </div>
+      
+            <!-- File Input -->
+            <div class="form-group">
+              <input type="file"  multiple accept='image/*' (change)="uploadFile($event)">
+            </div>
+      
+            <!-- Name -->
+            <div class="form-group input-group-lg">
+              <input class="form-control" placeholder="caption" formControlName="name">
+            </div>
+      
+            <!-- Submit -->
+            <div class="form-group">
+              <button class="btn btn-danger btn-block btn-lg">submit</button>
+            </div>
+      
+          </form>
+      
+        </div>
+      </div>
 
     

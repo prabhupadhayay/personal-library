@@ -21,14 +21,14 @@ app.use(function(req, res, next) {
 
 });
 
-
+app.use('/public', express.static('public'));
 
 const { mongoose } = require("./db.js");
 let userController = require("./controllers/usercontroller");
-let uploadController = require("./controllers/photo");
+//let uploadController = require("./controllers/photo");
 let multerController = require("./controllers/multer");
 let contactusController = require("./controllers/contactus");
-
+let uploadController = require("./controllers/upload")
 
 //API Routes
 app.use('/api/users', userController);
@@ -43,6 +43,8 @@ app.use('/api/users',contactusController)
     res.sendFile(path.resolve(appPath, 'index.html'));
   });
 // }
+
+
 app.listen(port, function(){
     console.log("Server running on localhost:" + port);
 });

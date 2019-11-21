@@ -4,14 +4,12 @@ const Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 //var ObjectId=require('mongoose').Types.ObjectId;
 const uploadschema = new Schema({
-    user_id: {
+    _id: mongoose.Schema.Types.ObjectId,
+    name: {
         type: String
-    },
-    path: {
+      },
+      avatar: {
         type: String
-    },
-    caption: {
-        type: String
-    }
+      }
 })
 module.exports = mongoose.model('upload', uploadschema, 'uploads');

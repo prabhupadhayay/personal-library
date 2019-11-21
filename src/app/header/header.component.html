@@ -1,0 +1,82 @@
+
+<!-- <mat-toolbar color="grey">
+    <mat-toolbar-row>
+       
+      <div class="toolbar" role="banner">
+        <img
+          width="250"
+          alt="Angular Logo"
+          src="https://vibhutitechnologies.net/occult-archive/wp-content/uploads/2019/09/cropped-logo-2-1.png"
+        />
+      </div>
+    
+      <span class="menu-spacer"></span>
+      <div _ngcontent-tmv-c1="" class="flex-spacer"></div>
+      <div>
+        <a mat-button [routerLink]="'/'" routerLinkActive="active"> Home </a>
+        <a mat-button [routerLink]="'/about'" routerLinkActive="active"> About </a>
+        <a mat-button [routerLink]="'/membership'" routerLinkActive="active"> Membership </a>
+        <a mat-button [routerLink]="'/faq'" routerLinkActive="active"> FAQ </a>
+        <a mat-button [routerLink]="'/contactus'" routerLinkActive="active"> Contact us </a>
+        <a mat-button [routerLink]="'/library'" routerLinkActive="active"> Contribute to Library </a>
+        <!-- <a mat-button [routerLink]="'/catalogue'" routerLinkActive="active"> catalogue </a> -->
+        <!-- <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/login'" routerLinkActive="active"> Login </a>
+        <a mat-button *ngIf="!_authService.loggedIn()" [routerLink]="'/register'" routerLinkActive="active"> Register </a>
+        <a mat-button style="cursor:pointer" *ngIf="_authService.loggedIn()"
+          (click)="_authService.logoutUser()">Logout</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar> --> 
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="anchor">
+    <a class="navbar-brand" [routerLink]="'/library'" routerLinkActive="active"><img
+      width="200"
+      alt="Angular Logo"
+      src="https://vibhutitechnologies.net/occult-archive/wp-content/uploads/2019/09/cropped-logo-2-1.png"
+    /></a>
+    </div>
+    <div class="navBar">
+    <button class="navbar-toggler awe" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+    <div class="collapse navbar-collapse navigation" id="navbarNav" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/'" routerLinkActive="active">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/about'" routerLinkActive="active">about us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/membership'" routerLinkActive="active">membership</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link "[routerLink]="'/library'" routerLinkActive="active">Contribute to library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "[routerLink]="'/contactus'" routerLinkActive="active">contactus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "[routerLink]="'/faq'" routerLinkActive="active">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "[routerLink]="'/catalogue'" routerLinkActive="active">catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "*ngIf="!_authService.loggedIn()" [routerLink]="'/login'" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "*ngIf="!_authService.loggedIn()" [routerLink]="'/register'" routerLinkActive="active"> Register </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "style="cursor:pointer" *ngIf="_authService.loggedIn()"
+          (click)="_authService.logoutUser()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

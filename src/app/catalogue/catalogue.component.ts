@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from '../shared/upload/upload.service';
-import { NgForm } from "@angular/forms";
+
 
 @Component({
   selector: 'app-catalogue',
@@ -9,35 +9,20 @@ import { NgForm } from "@angular/forms";
   providers:[UploadService]
 })
 export class CatalogueComponent implements OnInit {
-  imageUrl: string = "/assets/img/default-image.png";
-  fileToUpload: File = null;
+  Users: any = [];
 
-  constructor(private imageService : UploadService) { }
+  constructor(  
+    public fileUploadService : UploadService) 
+    {
+      this.getUsers();
+  }
 
   ngOnInit() {
   }
-
-
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
-
-    //Show image preview
-    var reader = new FileReader();
-    reader.onload = (event:any) => {
-      this.imageUrl = event.target.result;
-    }
-    reader.readAsDataURL(this.fileToUpload);
-  }
-
-  OnSubmit(Image){
-   this.imageService.postFile(this.fileToUpload).subscribe(
-     data =>{
-       console.log('done');
-       //Caption.value = null;
-       Image.value = null;
-       this.imageUrl = "/assets/img/default-image.png";
-     }
-   );
+  getUsers() {
+    this.fileUploadService.getUsers().subscribe((res) => {
+      this.Users = res['users'];
+    })
   }
 
 }
