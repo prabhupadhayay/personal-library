@@ -6,8 +6,8 @@ import { Upload } from './upload';
   providedIn: 'root'
 })
 export class UploadService {
-  //baseURL ="/api/users";
-  baseURL = "http://localhost:8080/api/users";
+  baseURL ="/api/users";
+  //baseURL = "http://localhost:8080/api/users";
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   percentDone: any = 0;
   constructor(private http: HttpClient) { }
