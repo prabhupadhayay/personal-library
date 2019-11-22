@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken')
 const Joi = require('joi');
 var ObjectId = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId;
+const Role = require('../_helpers/role');
+const authorize = require('../_helpers/authorize')
+
 const expressValidator = require('express-validator')
 const {
     check,
@@ -36,7 +39,7 @@ function verifyToken(req, res, next) {
 router.post('/register', (req, res) => {
     //let userData = req.body
     const today = new Date()
-
+    const role = Role.Admin
 
     let userData = {
 
@@ -45,7 +48,7 @@ router.post('/register', (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-        //created: today,
+        role:role,
         membership: {
             membership_id: req.body.membership.membership_id,
             btc: req.body.membership.btc,
@@ -62,7 +65,8 @@ router.post('/register', (req, res) => {
             console.log(err)
         } else {
             let payload = {
-                _id: registeredUser._id
+                _id: registeredUser._id,
+                role:registeredUser.role
 
             }
             let token = jwt.sign(payload, 'secretKey')
@@ -71,7 +75,8 @@ router.post('/register', (req, res) => {
                 _id: registeredUser._id,
                 first_name: registeredUser.first_name,
                 last_name: registeredUser.last_name,
-                email: registeredUser.email
+                email: registeredUser.email,
+                role:registeredUser.role
             })
         }
     })
@@ -92,7 +97,8 @@ router.post('/login', (req, res) => {
                 res.status(401).send('Invalid Password')
             } else {
                 let payload = {
-                    _id: user._id
+                    _id: user._id,
+                    role:user.role
 
                 }
                 let token = jwt.sign(payload, 'secretKey')
@@ -101,14 +107,15 @@ router.post('/login', (req, res) => {
                     _id: user._id,
                     first_name: user.first_name,
                     last_name: user.last_name,
-                    email: user.email
+                    email: user.email,
+                    role:user.role
                 })
             }
         }
     })
 })
 
-router.get('/users', (req, res) => {
+router.get('/users',  (req, res) => {
     User.find((err, docs) => {
         if (!err) {
             res.send(docs);
@@ -117,7 +124,7 @@ router.get('/users', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id',  (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No Records with given id  ${ req.params.id}`);
 
@@ -159,7 +166,7 @@ router.put('/:id', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id',  (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No Records with given id  ${ req.params.id}`);
     User.findByIdAndDelete(req.params.id, (err, doc) => {
