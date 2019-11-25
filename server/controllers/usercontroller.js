@@ -6,6 +6,7 @@ const Joi = require('joi');
 var ObjectId = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId;
 const Role = require('../_helpers/role');
+const Status = require("../_helpers/status");
 const authorize = require('../_helpers/authorize')
 
 const expressValidator = require('express-validator')
@@ -39,7 +40,7 @@ function verifyToken(req, res, next) {
 router.post('/register', (req, res) => {
     //let userData = req.body
     const today = new Date()
-    const role = Role.Admin
+    const role = Role.User
 
     let userData = {
 
@@ -49,13 +50,16 @@ router.post('/register', (req, res) => {
         email: req.body.email,
         password: req.body.password,
         role:role,
+       // status:status,
         membership: {
             membership_id: req.body.membership.membership_id,
             btc: req.body.membership.btc,
             xmr: req.body.membership.xmr,
             trans_id: req.body.membership.trans_id
         },
+//  if(membership.membership_id == 0){
 
+//  }
     }
 
     let user = new User(userData)
@@ -76,7 +80,8 @@ router.post('/register', (req, res) => {
                 first_name: registeredUser.first_name,
                 last_name: registeredUser.last_name,
                 email: registeredUser.email,
-                role:registeredUser.role
+                role:registeredUser.role,
+                status:registeredUser.status
             })
         }
     })
@@ -108,7 +113,8 @@ router.post('/login', (req, res) => {
                     first_name: user.first_name,
                     last_name: user.last_name,
                     email: user.email,
-                    role:user.role
+                    role:user.role,
+                    status:user.status
                 })
             }
         }
@@ -145,16 +151,16 @@ router.put('/:id', (req, res) => {
         username: req.body.username,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email,
-        password: req.body.password,
+         email: req.body.email,
+        // password: req.body.password,
         // created: today,
-        membership: {
-            membership_id: req.body.membership.membership_id,
-            btc: req.body.membership.btc,
-            xmr: req.body.membership.xmr,
-            trans_id: req.body.membership.trans_id
-        },
-
+        // membership: {
+        //     membership_id: req.body.membership.membership_id,
+        //     btc: req.body.membership.btc,
+        //     xmr: req.body.membership.xmr,
+        //     trans_id: req.body.membership.trans_id
+        // },
+status:req.body.status,
     }
     User.findByIdAndUpdate(req.params.id, {
         $set: userData

@@ -5,7 +5,7 @@ import { AdminService } from "../shared/admin/admin.service";
 import { User } from "../shared/admin/user";
 import { ModalService } from '../_modal';
 
-declare var M: any;
+declare const M: any;
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -22,6 +22,7 @@ export class AdminComponent implements OnInit {
     this.flag = { flag: 1 };
   }
   isShow = true;
+  status: any[] = ['Active', 'InActive'];
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
@@ -33,6 +34,7 @@ export class AdminComponent implements OnInit {
       last_name:"",
       email:"",
       password:"",
+      status:"",
       membership:{
         membership_id:"",
         btc:"",
@@ -55,6 +57,7 @@ export class AdminComponent implements OnInit {
       this.adminService.putUser(form.value).subscribe(res => {
         this.resetForm(form);
         this.refreshUserList();
+        //this.closeModal();
         var toastHTML = '<span style="color:black">Updated Successfuly</span>';
         M.toast({ html: toastHTML });
       });

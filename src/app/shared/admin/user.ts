@@ -5,7 +5,7 @@ export class User{
     last_name: string;
     email:string;
     password:string;
-   
+   status:string;
 membership:{
     membership_id:string;
     btc:string;

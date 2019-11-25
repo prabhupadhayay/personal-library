@@ -3,6 +3,7 @@ mongoose.set('useCreateIndex', true);
 const Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 const Role = require('../_helpers/role');
+const Status = require('../_helpers/status');
 var ObjectId=require('mongoose').Types.ObjectId;
 const membershipschema = new Schema({
     membership_id: {
@@ -51,6 +52,10 @@ const userSchema = new Schema({
     role:{
         type:String,
       //default:Role.User
+    },
+    status:{
+    type:String,
+    default:Status.InActive
     },
     membership: membershipschema
      

@@ -7,8 +7,8 @@ import {User} from "./user";
 export class AdminService {
   selectedUser: User;
   user: User[];
-  // readonly baseurl = "/api/users";
-  // readonly baseurl1 = "/api/users/add";
+  // readonly baseurl = "http://localhost:8080/api/users";
+  // readonly baseurl1 = "http://localhost:8080/api/users/add";
   readonly baseurl="/api/users";
   readonly baseurl1="/api/users/add";
   constructor(private http: HttpClient) { }

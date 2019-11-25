@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
 import { ModalModule } from './_modal';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -30,7 +31,17 @@ import { MustMatchDirective } from "./_helpers/must-match.directive";
 import { AuthService } from "./shared/auth/auth.service";
 import { ContactusService } from "./shared/contactus/contactus.service";
 import { UploadService } from "./shared/upload/upload.service";
+import { 
+  RoleGuardService  
+} from './role-guard.service';
+
+
 import { HeaderComponent } from './header/header.component';
+
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 
 @NgModule({
@@ -63,9 +74,15 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     CommonModule,
     ModalModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+       
+      }
+    })
   ],
-  providers: [AuthService, AuthGuard,ContactusService,UploadService],
+  providers: [AuthService, AuthGuard,ContactusService,UploadService, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
