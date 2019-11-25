@@ -9,7 +9,7 @@
 
       <div class="card blue-grey lighten-4">
         
-        <table class="responsive-table highlight">
+        <table class="table-responsive responsive-table highlight">
             <!-- <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
             <button (click)="openModal('custom-modal-2')">Open Modal 2</button> -->
           <thead>
@@ -106,10 +106,10 @@
             <td>{{peo.first_name}}</td>
             <td>{{peo.last_name}}</td>
             <td>{{peo.status}}</td>
-            <a class="action-btn" (click)="onEdit(peo)" (click)="openModal('custom-modal-1')" (click)="setFlag()">
+            <a class="btn btn-sm action-btn" (click)="onEdit(peo)" (click)="openModal('custom-modal-1')" (click)="setFlag()">
               <i class="material-icons">edit</i>
             </a>
-            <a class="action-btn" (click)="onDelete(peo._id)">
+            <a class="btn btn-sm action-btn" (click)="onDelete(peo._id)">
               <i class="material-icons ">delete</i>
             </a>
             <!-- </div> -->
