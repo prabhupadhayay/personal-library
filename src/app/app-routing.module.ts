@@ -9,6 +9,7 @@ import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { LibraryComponent } from "./library/library.component";
 import { AdminComponent } from './admin/admin.component';
+import { FooterComponent } from './footer/footer.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { 
   RoleGuardService as RoleGuard 
@@ -34,6 +35,7 @@ const routes: Routes = [
     expectedRole: 'Admin'
   } ,component: AdminComponent },
   { path: "catalogue", component: CatalogueComponent },
+  { path: "footer", component: FooterComponent },
   { path: "**", redirectTo: "/", pathMatch: "full" }
 ];
 
