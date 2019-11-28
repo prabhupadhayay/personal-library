@@ -8,7 +8,7 @@ import { MembershipComponent } from "./membership/membership.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { LibraryComponent } from "./library/library.component";
-import { AdminComponent } from './admin/admin.component';
+// import { AdminComponent } from './admin/admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { 
@@ -30,13 +30,14 @@ const routes: Routes = [
   { path: "library", component: LibraryComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "admin",   canActivate: [RoleGuard], 
-  data: { 
-    expectedRole: 'Admin'
-  } ,component: AdminComponent },
+  // { path: "admin",   canActivate: [RoleGuard], 
+  // data: { 
+  //   expectedRole: 'Admin'
+  // } ,component: AdminComponent },
   { path: "catalogue", component: CatalogueComponent },
   { path: "footer", component: FooterComponent },
-  { path: "**", redirectTo: "/", pathMatch: "full" }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+ // { path: "**", redirectTo: "/", pathMatch: "full" }
 ];
 
 @NgModule({

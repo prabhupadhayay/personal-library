@@ -9,8 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   // private _registerUrl = "http://localhost:8080/api/users/register";
-  // private _loginUrl = "http://localhost:8080/api/users/login";
-  private _registerUrl = "/api/users/register";
+   //private _loginUrl = "http://localhost:8080/api/users/login";
+  //private _registerUrl = "/api/users/register";
   private _loginUrl = "/api/users/login";
 
   constructor(private http: HttpClient,
@@ -20,9 +20,9 @@ export class AuthService {
 
 
 
-    registerUser(user) {
-      return this.http.post<any>(this._registerUrl, user)
-    }
+    // registerUser(user) {
+    //   return this.http.post<any>(this._registerUrl, user)
+    // }
   
     loginUser(user) {
       return this.http.post<any>(this._loginUrl, user)
@@ -30,7 +30,7 @@ export class AuthService {
   
     logoutUser() {
       localStorage.removeItem('token')
-      this._router.navigate(['/'])
+      this._router.navigate(['/login'])
     }
   
     getToken() {

@@ -12,7 +12,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatIconModule } from '@angular/material/icon';
 import { WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md'
-
+import {AdminModule} from './admin/admin.module';
 
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -27,7 +27,7 @@ import { AccountComponent } from "./account/account.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { LibraryComponent } from './library/library.component';
-import { AdminComponent } from './admin/admin.component';
+//import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 //import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
@@ -64,7 +64,7 @@ export function tokenGetter() {
     RegisterComponent,
     MustMatchDirective,
     LibraryComponent,
-    AdminComponent,
+    //AdminComponent,
     CatalogueComponent,
     HeaderComponent,
     FooterComponent,
@@ -87,6 +87,7 @@ export function tokenGetter() {
     WavesModule,
     ButtonsModule,
     IconsModule,
+    AdminModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter
